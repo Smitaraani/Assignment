@@ -1,27 +1,26 @@
 package Java;
 
-import java.util.Collections;
-import java.util.ArrayList;
+import java.util.Random;
 
-public class ShuffleArray {
-	
-	 public static void main(String[] args) {
-	        ArrayList<Integer> arrayList = new ArrayList<>();
-	        arrayList.add(1);
-	        arrayList.add(2);
-	        arrayList.add(3);
-	        arrayList.add(4);
-	        arrayList.add(5);
-	        arrayList.add(6);
-	        arrayList.add(7);
+public class ArrayShuffle {
+    public static void main(String[] args) {
+        int[] array = {1, 2, 3, 4, 5, 6, 7};
+        shuffleArray(array);
 
-	        // Shuffle the ArrayList
-	        Collections.shuffle(arrayList);
+        for (int value : array) {
+            System.out.print(value + " ");
+        }
+    }
 
-	        // Print the shuffled ArrayList
-	        System.out.println("Shuffled ArrayList: " + arrayList);
-	    }
-	}
-	
+    public static void shuffleArray(int[] array) {
+        int n = array.length;
+        Random random = new Random();
 
-
+        for (int i = n - 1; i > 0; i--) {
+            int j = random.nextInt(i + 1);
+            int temp = array[i];
+            array[i] = array[j];
+            array[j] = temp;
+        }
+    }
+}
