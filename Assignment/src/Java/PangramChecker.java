@@ -1,12 +1,9 @@
 package Java;
 
-import java.util.HashSet;
-
-public class PangramChecker {
+public class Pangram {
     public static void main(String[] args) {
-        String input = "The quick brown fox jumps over the lazy dog";
-        boolean isPangram = checkIfPangram(input);
-        
+        String input = "The coding assignment";
+        boolean isPangram = isPangram(input);
         if (isPangram) {
             System.out.println("The input is a pangram.");
         } else {
@@ -14,19 +11,27 @@ public class PangramChecker {
         }
     }
 
-    public static boolean checkIfPangram(String input) {
-        // Remove spaces and convert to lowercase for case insensitivity
-        input = input.replaceAll(" ", "").toLowerCase();
-        
-        // Use a HashSet to store unique characters
-        HashSet<Character> uniqueChars = new HashSet<>();
-        
-        // Iterate through the input string and add each character to the HashSet
-        for (char c : input.toCharArray()) {
-            uniqueChars.add(c);
+    public static boolean isPangram(String str) {
+        str = str.toLowerCase(); 
+
+        boolean[] alphabetPresent = new boolean[26];
+
+        for (int i = 0; i < str.length(); i++) {
+            char c = str.charAt(i);
+            if (c >= 'a' && c <= 'z') {
+                alphabetPresent[c - 'a'] = true;
+            }
         }
-        
-        // Check if the size of the HashSet is 26 (number of alphabets)
-        return uniqueChars.size() == 26;
+        for (boolean present : alphabetPresent) {
+            if (!present) {
+                return false;
+            }
+        }
+
+        return true;
     }
 }
+
+	
+
+
