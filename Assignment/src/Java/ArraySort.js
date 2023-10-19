@@ -1,8 +1,19 @@
-let array = [5, 2, 9, 1, 5, 6];
+public class ReverseWordsInSentence {
+    public static void main(String[] args) {
+        String inputSentence = "This is a sunny day";
+        String reversedSentence = reverseWords(inputSentence);
+        System.out.println(reversedSentence);
+    }
 
-// Sort the array in descending order
-array.sort(function(a, b) {
-    return b - a;
-});
+    public static String reverseWords(String sentence) {
+        String[] words = sentence.split(" "); 
+        StringBuilder reversedSentence = new StringBuilder();
 
-console.log(array); // This will print [9, 6, 5, 5, 2, 1] in descending order
+        for (String word : words) {
+            StringBuilder reversedWord = new StringBuilder(word).reverse(); 
+            reversedSentence.append(reversedWord).append(" "); 
+        }
+
+        return reversedSentence.toString().trim();
+    }
+}
