@@ -1,19 +1,21 @@
-public class ReverseWordsInSentence {
-    public static void main(String[] args) {
-        String inputSentence = "This is a sunny day";
-        String reversedSentence = reverseWords(inputSentence);
-        System.out.println(reversedSentence);
+function sortDescending(arr) {
+  for (let i = 0; i < arr.length - 1; i++) {
+    let maxIndex = i;
+
+    for (let j = i + 1; j < arr.length; j++) {
+      if (arr[j] > arr[maxIndex]) {
+        maxIndex = j;
+      }
     }
 
-    public static String reverseWords(String sentence) {
-        String[] words = sentence.split(" "); 
-        StringBuilder reversedSentence = new StringBuilder();
-
-        for (String word : words) {
-            StringBuilder reversedWord = new StringBuilder(word).reverse(); 
-            reversedSentence.append(reversedWord).append(" "); 
-        }
-
-        return reversedSentence.toString().trim();
+    if (maxIndex !== i) 
+      let temp = arr[i];
+      arr[i] = arr[maxIndex];
+      arr[maxIndex] = temp;
     }
+  }
 }
+
+const numbers = [5, 2, 9, 1, 5, 6,3,7,4];
+sortDescending(numbers);
+console.log(numbers); 
