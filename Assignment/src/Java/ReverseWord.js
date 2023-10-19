@@ -1,21 +1,33 @@
-function reverseWords(sentence) {
-    // Split the sentence into words
-    const words = sentence.split(" ");
+public class ReverseWordsInSentence {
+    public static void main(String[] args) {
+        String input = "This is a sunny day";
+        String reversedSentence = reverseWordsInSentence(input);
+        System.out.println(reversedSentence);
+    }
 
-    // Reverse each word and store them in an array
-    const reversedWords = words.map(word => {
-        // Use split("") to convert the word into an array of characters,
-        // reverse it, and then join it back into a word
-        return word.split("").reverse().join("");
-    });
+    public static String reverseWordsInSentence(String sentence) {
+        String[] words = sentence.split(" ");
+        StringBuilder reversedSentence = new StringBuilder();
 
-    // Join the reversed words to form the reversed sentence
-    const reversedSentence = reversedWords.join(" ");
+        for (int i = 0; i < words.length; i++) {
+            String word = words[i];
+            String reversedWord = reverseWord(word);
+            reversedSentence.append(reversedWord);
 
-    return reversedSentence;
+            // Add a space if it's not the last word
+            if (i < words.length - 1) {
+                reversedSentence.append(" ");
+            }
+        }
+
+        return reversedSentence.toString();
+    }
+
+    public static String reverseWord(String word) {
+        StringBuilder reversedWord = new StringBuilder();
+        for (int i = word.length() - 1; i >= 0; i--) {
+            reversedWord.append(word.charAt(i));
+        }
+        return reversedWord.toString();
+    }
 }
-
-// Example usage:
-const inputSentence = "This is a sunny day";
-const reversedSentence = reverseWords(inputSentence);
-console.log(reversedSentence);
